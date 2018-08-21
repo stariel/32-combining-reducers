@@ -1,6 +1,6 @@
 const EXPENSE_CREATE = 'Expense/ADD';
 const EXPENSE_UPDATE = 'Expense/UPDATE';
-const EXPENSE_DESTROY = 'Expense/DELETE';
+const EXPENSE_DELETE = 'Expense/DELETE';
 
 export function createExpense(expense) {
   return {
@@ -18,7 +18,7 @@ export function updateExpense(expense) {
 
 export function destroyExpense(expense) {
   return {
-    type: EXPENSE_DESTROY,
+    type: EXPENSE_DELETE,
     payload: expense,
   };
 }

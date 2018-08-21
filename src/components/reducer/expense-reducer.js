@@ -1,11 +1,10 @@
 import uuid from 'uuid/v1';
+import defaultState from './default-state.js';
 
 // Actions
 export const EXPENSE_CREATE = 'Expense/ADD';
 export const EXPENSE_UPDATE = 'Expense/UPDATE';
-export const EXPENSE_DESTROY = 'Expense/DELETE';
-
-const defaultState = [];
+export const EXPENSE_DELETE = 'Expense/DELETE';
 
 export default function reducer(state = defaultState, action) {
 
@@ -17,13 +16,22 @@ export default function reducer(state = defaultState, action) {
     payload.categoryID = '';
     payload.timestamp = new Date().getTime();
   
-    return [...state, payload];
+    return {
+        ...state,
+        expenses: [...state.expenses, payload]
+};
   
   case EXPENSE_UPDATE:
-    return state.map(expense => expense.id === payload.id ? payload : expense);
+    return {
+      ...state,
+      expenses: [ state.expenses.map(expense => expense.id === payload.id ? payload : expense)]
+      };
   
-  case EXPENSE_DESTROY:
-    return state.filter(expense => expense.id !== payload.id);
+  case EXPENSE_DELETE:
+    return {
+      ...state,
+      expenses: [ state.expenses.filter(expense => expense.id !== payload.id)]
+      };
   
   default: return state;
   }

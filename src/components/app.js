@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Dashboard from './dashboard.js';
-import store from '../lib/store.js';
+import store from './reducer/index.js';
 
 class App extends Component {
   render() {

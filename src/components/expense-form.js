@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-class CategoryForm extends Component {
+class ExpenseForm extends Component {
   
   constructor(props) {
     super(props);
@@ -9,10 +9,10 @@ class CategoryForm extends Component {
         id: null,
         timestamp: '',
         name: '',
-        budget: 0,
+        price: 0,
     };
 
-    const initialState = this.props.category || this.defaultState;
+    const initialState = this.props.expense || this.defaultState;
 
     this.state =  {...initialState};
   }
@@ -39,26 +39,26 @@ class CategoryForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input name="name" placeholder="name" value={this.state.name} onChange={this.onChange} />
-        <input name="budget" placeholder="budget" type="number" value={this.state.budget} onChange={this.onChange} />
+        <input name="price" placeholder="price" type="number" value={this.state.price} onChange={this.onChange} />
         <button>{this.props.buttonText}</button>
       </form>
     );
   }
 }
 
-CategoryForm.propTypes = {
+ExpenseForm.propTypes = {
   onComplete: PropTypes.func.isRequired,
   buttonText: PropTypes.string.isRequired,
-  category: PropTypes.object,
+  expense: PropTypes.object,
 }
 
-CategoryForm.defaultProps = {
-  category: {
+ExpenseForm.defaultProps = {
+  expense: {
     id: null,
     timestamp: '',
     name: '',
-    budget: 0,
+    price: 0,
   }
 }
 
-export default CategoryForm;
+export default ExpenseForm;
